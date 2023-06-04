@@ -1,4 +1,5 @@
 ---
+import Button from "../../components/Button.astro";
 import Layout from "../../layouts/Layout.astro";
 
 export async function getStaticPaths() {
@@ -56,14 +57,12 @@ const { title, body } = Astro.props;
 <Layout title={title}>
   <!-- Blog Article -->
   <div class="mx-auto w-full max-w-7xl flex-1 px-4 pb-12 sm:px-6 lg:px-8">
-    <a href="/blog">
-      <button
-        class="mt-6 rounded-md bg-gray-900 px-3.5 py-2.5 font-semibold text-white shadow-sm transition-colors hover:bg-sky-600 dark:hover:bg-gray-800"
-      >
-        Go Back
-      </button>
-    </a>
-    <div class="mx-auto max-w-3xl">
+    <div class="flex justify-center lg:justify-start">
+      <a href="/blog">
+        <Button>Go Back</Button>
+      </a>
+    </div>
+    <div class="mx-auto mt-5 max-w-3xl">
       <!-- Content -->
       <div class="space-y-5 md:space-y-8">
         <div class="space-y-3">

@@ -1,3 +1,7 @@
+---
+import Button from "./Button.astro";
+---
+
 <main class="flex-1">
   <section class="mx-auto flex max-w-7xl items-center p-10 text-xl">
     <div>
@@ -7,7 +11,7 @@
       >
         Michael Lei
       </h1>
-      <p class="leading-relaxed">
+      <p class="mb-5 leading-relaxed">
         I'm a web developer based in the Vancouver, BC.
         <br />
         I'm currently studying
@@ -19,11 +23,9 @@
           Fullstack Web Development
         </a> at British Columbia Institute of Technology.
       </p>
-      <button
-        class="mt-6 rounded-md bg-gray-900 px-3.5 py-2.5 font-semibold text-white shadow-sm transition-colors hover:bg-sky-600 dark:hover:bg-gray-800"
-      >
-        Check out my projects
-      </button>
+      <a href="/projects">
+        <Button>Check out my projects</Button>
+      </a>
     </div>
   </section>
 </main>
