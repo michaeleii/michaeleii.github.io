@@ -24,32 +24,44 @@ import "../styles/index.css";
     </nav>
   </header>
   <main class="flex-1">
-    <section class="mx-auto max-w-7xl p-10 text-xl">
-      <p>Hello, I'm</p>
-      <h1 class="my-5 text-5xl font-bold tracking-tighter text-gray-900">
-        Michael Lei
-      </h1>
-      <p class="leading-relaxed">
-        I'm a web developer based in the Vancouver, BC.
-        <br />
-        I'm currently studying
-        <a
-          class="font-semibold text-gray-900 transition-colors hover:text-gray-700"
-          href="https://www.bcit.ca/programs/full-stack-web-development-diploma-full-time-7540dipma/"
+    <section class="mx-auto flex max-w-7xl items-center p-10 text-xl">
+      <div>
+        <p>Hello, I'm</p>
+        <h1 class="my-5 text-5xl font-bold tracking-tighter text-gray-900">
+          Michael Lei
+        </h1>
+        <p class="leading-relaxed">
+          I'm a web developer based in the Vancouver, BC.
+          <br />
+          I'm currently studying
+          <a
+            class="font-semibold text-gray-900 hover:text-gray-700"
+            href="https://www.bcit.ca/programs/full-stack-web-development-diploma-full-time-7540dipma/"
+          >
+            Fullstack Web Development
+          </a> at British Columbia Institute of Technology.
+        </p>
+        <button
+          class="mt-6 rounded-md bg-gray-900 px-3.5 py-2.5 font-semibold text-white shadow-sm transition-colors hover:bg-gray-800"
         >
-          Fullstack Web Development
-        </a> at British Columbia Institute of Technology.
-      </p>
-      <button
-        class="mt-6 rounded-md bg-gray-900 px-3.5 py-2.5 font-semibold text-white shadow-sm transition-colors hover:bg-gray-800"
-      >
-        Check out my projects
-      </button>
+          Check out my projects
+        </button>
+      </div>
+      <div></div>
     </section>
   </main>
-  <footer class="p-10">
-    <p class="mx-auto max-w-7xl">
-      &copy; {new Date().getFullYear()} Michael Lei.
-    </p>
+  <footer class="bg-gray-900 p-10 text-white">
+    <div class="mx-auto flex max-w-7xl justify-between">
+      <p>
+        &copy; {new Date().getFullYear()} Michael Lei.
+      </p>
+      <nav>
+        <ul class="flex gap-5">
+          <li>LinkedIn</li>
+          <li>GitHub</li>
+          <li>Twitter</li>
+        </ul>
+      </nav>
+    </div>
   </footer>
 </body>
