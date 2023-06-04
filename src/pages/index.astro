@@ -1,28 +1,9 @@
 ---
 import "../styles/index.css";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<body
-  class="flex min-h-screen flex-col bg-gradient-to-r from-indigo-200 via-red-200 to-yellow-100 text-gray-800"
->
-  <header
-    class="mx-auto flex w-full max-w-7xl items-center justify-between gap-5 p-10"
-  >
-    <div class="flex items-center gap-2 text-2xl">
-      <img
-        class="h-10 w-10 rounded-full"
-        src="https://avatars.githubusercontent.com/u/57844588?v=4"
-        alt=""
-      />
-      <p class="font-bold tracking-tighter text-gray-900">Michael Lei</p>
-    </div>
-    <nav>
-      <ul class="flex gap-5 text-xl font-semibold">
-        <li>Projects</li>
-        <li>Blog</li>
-      </ul>
-    </nav>
-  </header>
+<Layout title="Michael Lei">
   <main class="flex-1">
     <section class="mx-auto flex max-w-7xl items-center p-10 text-xl">
       <div>
@@ -50,18 +31,4 @@ import "../styles/index.css";
       <div></div>
     </section>
   </main>
-  <footer class="bg-gray-900 p-10 text-white">
-    <div class="mx-auto flex max-w-7xl justify-between">
-      <p>
-        &copy; {new Date().getFullYear()} Michael Lei.
-      </p>
-      <nav>
-        <ul class="flex gap-5">
-          <li>LinkedIn</li>
-          <li>GitHub</li>
-          <li>Twitter</li>
-        </ul>
-      </nav>
-    </div>
-  </footer>
-</body>
+</Layout>
