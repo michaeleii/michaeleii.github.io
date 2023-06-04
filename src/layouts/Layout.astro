@@ -8,7 +8,7 @@ const { title } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -23,7 +23,7 @@ const { title } = Astro.props as Props;
     <title>{title}</title>
   </head>
   <body
-    class="flex min-h-screen flex-col bg-gradient-to-r from-indigo-200 via-red-200 to-yellow-100 text-gray-800"
+    class="flex min-h-screen flex-col bg-gradient-to-r from-indigo-200 via-red-200 to-yellow-100 text-gray-800 dark:bg-gradient-to-b dark:from-gray-900 dark:to-gray-600 dark:text-gray-100"
   >
     <Header />
     <slot />
