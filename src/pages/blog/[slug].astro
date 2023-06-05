@@ -1,59 +1,23 @@
 ---
 import Button from "../../components/Button.astro";
 import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
-  const response = await fetch("http://127.0.0.1:1337/api/posts");
-
-  const {
-    data,
-    meta,
-  }: {
-    data: [
-      {
-        id: number;
-        attributes: {
-          title: string;
-          slug: string;
-          body: string;
-          createdAt: string;
-          updatedAt: string;
-          publishedAt: string;
-        };
-      }
-    ];
-    meta: {
-      pagination: {
-        page: number;
-        pageSize: number;
-        pageCount: number;
-        total: number;
-      };
-    };
-  } = await response.json();
-  const posts = data.map((p) => {
-    return {
-      id: p.id,
-      slug: p.attributes.slug,
-      title: p.attributes.title,
-      body: p.attributes.body,
-      createdAt: p.attributes.createdAt,
-      updatedAt: p.attributes.updatedAt,
-      publishedAt: p.attributes.publishedAt,
-    };
-  });
-  return posts.map(({ slug, title, body }) => {
-    return {
-      params: { slug },
-      props: { title, body },
-    };
-  });
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
 }
-
-const { title, body } = Astro.props;
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+const { post } = Astro.props as Props;
 ---
 
-<Layout title={title}>
+<Layout title={post.data.title}>
   <!-- Blog Article -->
   <div class="mx-auto w-full max-w-7xl flex-1 px-4 pb-12 sm:px-6 lg:px-8">
     <div class="flex justify-center lg:justify-start">
@@ -66,11 +30,11 @@ const { title, body } = Astro.props;
       <div class="space-y-5 md:space-y-8">
         <div class="space-y-3">
           <h2 class="text-2xl font-bold dark:text-white md:text-3xl">
-            {title}
+            {post.data.title}
           </h2>
 
           <p class="text-lg text-gray-800 dark:text-gray-200">
-            {body}
+            {post.data.body}
           </p>
         </div>
       </div>

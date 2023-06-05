@@ -1,12 +1,14 @@
 ---
 import Label from "./Label.astro";
+import type Technologies from "../technologies";
+
 interface Props {
   title: string;
-  technologies?: string[];
+  technologies?: Technologies[];
   body: string;
   link: string;
   linkText: string;
-  createdAt: Date;
+  createdAt?: Date;
 }
 
 const { title, body, link, linkText, createdAt, technologies } =
@@ -48,15 +50,17 @@ const { title, body, link, linkText, createdAt, technologies } =
     class="rounded-b-xl border-t bg-gray-100 px-4 py-3 dark:border-gray-700 dark:bg-gray-800 md:px-5 md:py-4"
   >
     <p class="mt-1 text-sm text-gray-500 dark:text-gray-500">
+      {!!technologies && technologies.map((t) => <Label technology={t} />)}
       {
-        !!technologies
-          ? technologies.map((t) => <Label technology={t} />)
-          : createdAt.toLocaleString("en-US", {
-              weekday: "long",
+        !!createdAt && (
+          <span class="ml-2">
+            {new Intl.DateTimeFormat("en-US", {
               year: "numeric",
               month: "long",
               day: "numeric",
-            })
+            }).format(createdAt)}
+          </span>
+        )
       }
     </p>
   </div>

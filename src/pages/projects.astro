@@ -1,57 +1,9 @@
 ---
 import Card from "../components/Card.astro";
 import Layout from "../layouts/Layout.astro";
-const response = await fetch(
-  "http://127.0.0.1:1337/api/projects?fields=name&populate=technologies"
-);
+import { getCollection } from "astro:content";
 
-const {
-  data,
-  meta,
-}: {
-  data: [
-    {
-      id: number;
-      attributes: {
-        title: string;
-        description: string;
-        link: string;
-        createdAt: string;
-        updatedAt: string;
-        publishedAt: string;
-        technologies: {
-          data: {
-            id: number;
-            attributes: {
-              name: string;
-            };
-          }[];
-        };
-      };
-    }
-  ];
-  meta: {
-    pagination: {
-      page: number;
-      pageSize: number;
-      pageCount: number;
-      total: number;
-    };
-  };
-} = await response.json();
-
-const projects = data.map((p) => {
-  return {
-    id: p.id,
-    title: p.attributes.title,
-    description: p.attributes.description,
-    link: p.attributes.link,
-    createdAt: new Date(p.attributes.createdAt),
-    updatedAt: p.attributes.updatedAt,
-    publishedAt: p.attributes.publishedAt,
-    technologies: p.attributes.technologies.data.map((t) => t.attributes.name),
-  };
-});
+const projects = await getCollection("project");
 ---
 
 <Layout title="Projects">
@@ -62,12 +14,11 @@ const projects = data.map((p) => {
         {
           projects.map((project) => (
             <Card
-              title={project.title}
-              technologies={project.technologies}
-              body={project.description}
-              createdAt={project.createdAt}
+              title={project.data.title}
+              technologies={project.data.technologies}
+              body={project.data.description}
               linkText="View Project"
-              link={project.link}
+              link={project.data.link}
             />
           ))
         }

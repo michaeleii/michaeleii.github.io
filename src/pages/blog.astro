@@ -1,46 +1,8 @@
 ---
 import Card from "../components/Card.astro";
 import Layout from "../layouts/Layout.astro";
-const response = await fetch("http://127.0.0.1:1337/api/posts");
-
-const {
-  data,
-  meta,
-}: {
-  data: [
-    {
-      id: number;
-      attributes: {
-        title: string;
-        slug: string;
-        body: string;
-        createdAt: string;
-        updatedAt: string;
-        publishedAt: string;
-      };
-    }
-  ];
-  meta: {
-    pagination: {
-      page: number;
-      pageSize: number;
-      pageCount: number;
-      total: number;
-    };
-  };
-} = await response.json();
-
-const posts = data.map((p) => {
-  return {
-    id: p.id,
-    slug: p.attributes.slug,
-    title: p.attributes.title,
-    body: p.attributes.body,
-    createdAt: new Date(p.attributes.createdAt),
-    updatedAt: p.attributes.updatedAt,
-    publishedAt: p.attributes.publishedAt,
-  };
-});
+import { getCollection } from "astro:content";
+const posts = await getCollection("blog");
 ---
 
 <Layout title="Blog">
@@ -50,11 +12,11 @@ const posts = data.map((p) => {
       {
         posts.map((post) => (
           <Card
-            title={post.title}
-            body={post.body}
+            title={post.data.title}
+            body={post.data.body}
             link={`/blog/${post.slug}`}
             linkText="Read More"
-            createdAt={post.createdAt}
+            createdAt={post.data.createdAt}
           />
         ))
       }

@@ -4,12 +4,12 @@ import { blogSchema, projectSchema } from "../schemas";
 
 // 2. Define a `type` and `schema` for each collection
 const blog = defineCollection({
-  type: "content", // v2.5.0 and later
+  type: "content",
   schema: blogSchema,
 });
 
 const project = defineCollection({
-  type: "content", // v2.5.0 and later
+  type: "content",
   schema: projectSchema,
 });
 
