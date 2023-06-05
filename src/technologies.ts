@@ -6,6 +6,10 @@ const Technologies = z.enum([
   "tailwindcss",
   "nextjs",
   "express",
+  "svelte",
+  "html",
+  "css",
+  "javascript",
 ]);
 
 type Technologies = z.infer<typeof Technologies>;
