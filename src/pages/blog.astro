@@ -36,7 +36,7 @@ const posts = data.map((p) => {
     slug: p.attributes.slug,
     title: p.attributes.title,
     body: p.attributes.body,
-    createdAt: p.attributes.createdAt,
+    createdAt: new Date(p.attributes.createdAt),
     updatedAt: p.attributes.updatedAt,
     publishedAt: p.attributes.publishedAt,
   };
@@ -46,6 +46,7 @@ const posts = data.map((p) => {
 <Layout title="Blog">
   <section class="flex flex-1 justify-center p-10">
     <div class="mx-auto flex max-w-7xl flex-1 flex-col gap-5">
+      <h1 class="text-4xl font-bold">Posts</h1>
       {
         posts.map((post) => (
           <Card
@@ -53,6 +54,7 @@ const posts = data.map((p) => {
             body={post.body}
             link={`/blog/${post.slug}`}
             linkText="Read More"
+            createdAt={post.createdAt}
           />
         ))
       }

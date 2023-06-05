@@ -1,27 +1,24 @@
 ---
+import Label from "./Label.astro";
 interface Props {
   title: string;
+  technologies?: string[];
   body: string;
   link: string;
   linkText: string;
-  CreatedAt?: Date;
+  createdAt: Date;
 }
 
-const {
-  title,
-  body,
-  link,
-  linkText,
-  CreatedAt = new Date(Date.now()),
-} = Astro.props as Props;
+const { title, body, link, linkText, createdAt, technologies } =
+  Astro.props as Props;
 ---
 
 <div
   class="flex flex-col rounded-xl border bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:shadow-slate-700/[.7]"
 >
-  <div class="p-4 md:p-5">
+  <div class="flex flex-1 flex-col p-4 md:p-5">
     <h3 class="text-lg font-bold text-gray-800 dark:text-white">{title}</h3>
-    <p class="mt-2 text-gray-800 dark:text-gray-400">
+    <p class="mt-2 flex-1 text-gray-800 dark:text-gray-400">
       {body}
     </p>
     <a
@@ -52,11 +49,14 @@ const {
   >
     <p class="mt-1 text-sm text-gray-500 dark:text-gray-500">
       {
-        CreatedAt.toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        })
+        !!technologies
+          ? technologies.map((t) => <Label technology={t} />)
+          : createdAt.toLocaleString("en-US", {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
       }
     </p>
   </div>

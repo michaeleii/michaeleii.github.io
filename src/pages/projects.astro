@@ -1,10 +1,77 @@
 ---
 import Card from "../components/Card.astro";
 import Layout from "../layouts/Layout.astro";
+const response = await fetch(
+  "http://127.0.0.1:1337/api/projects?fields=name&populate=technologies"
+);
+
+const {
+  data,
+  meta,
+}: {
+  data: [
+    {
+      id: number;
+      attributes: {
+        title: string;
+        description: string;
+        link: string;
+        createdAt: string;
+        updatedAt: string;
+        publishedAt: string;
+        technologies: {
+          data: {
+            id: number;
+            attributes: {
+              name: string;
+            };
+          }[];
+        };
+      };
+    }
+  ];
+  meta: {
+    pagination: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
+} = await response.json();
+
+const projects = data.map((p) => {
+  return {
+    id: p.id,
+    title: p.attributes.title,
+    description: p.attributes.description,
+    link: p.attributes.link,
+    createdAt: new Date(p.attributes.createdAt),
+    updatedAt: p.attributes.updatedAt,
+    publishedAt: p.attributes.publishedAt,
+    technologies: p.attributes.technologies.data.map((t) => t.attributes.name),
+  };
+});
 ---
 
 <Layout title="Projects">
   <section class="flex flex-1 justify-center p-10">
-    <div class="mx-auto flex max-w-7xl flex-1 flex-col gap-5"></div>
+    <div class="mx-auto flex max-w-7xl flex-1 flex-col gap-5">
+      <h1 class="text-4xl font-bold">Projects</h1>
+      <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {
+          projects.map((project) => (
+            <Card
+              title={project.title}
+              technologies={project.technologies}
+              body={project.description}
+              createdAt={project.createdAt}
+              linkText="View Project"
+              link={project.link}
+            />
+          ))
+        }
+      </div>
+    </div>
   </section>
 </Layout>
