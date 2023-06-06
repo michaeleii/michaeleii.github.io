@@ -6,8 +6,8 @@ const posts = await getCollection("blog");
 ---
 
 <Layout title="Blog">
-  <section class="flex flex-1 justify-center p-10">
-    <div class="mx-auto flex max-w-7xl flex-1 flex-col gap-5">
+  <section class="flex flex-1 justify-center">
+    <div class="mx-auto flex max-w-7xl flex-1 flex-col gap-5 p-5">
       <h1 class="text-4xl font-bold">Posts</h1>
       {
         posts.map((post) => (
