@@ -1,6 +1,6 @@
 ---
-title: "Todo List"
-description: "A web application that allows users to create manage tasks."
-link: https://michaeleii.github.io/react-to-do-list/
-technologies: [react, typescript, css]
+title: "Feedback App"
+description: "Feedback App is a web application that allows users give reviews and ratings."
+link: https://react-feedback-ui-michaellei.netlify.app/
+technologies: [react, tailwindcss, typescript]
 ---
