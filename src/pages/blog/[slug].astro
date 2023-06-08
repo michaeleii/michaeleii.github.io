@@ -15,30 +15,20 @@ interface Props {
   post: CollectionEntry<"blog">;
 }
 const { post } = Astro.props as Props;
+const { Content, headings } = await post.render();
 ---
 
 <Layout title={post.data.title}>
-  <!-- Blog Article -->
   <div class="mx-auto w-full max-w-7xl flex-1 px-4 pb-12 sm:px-6 lg:px-8">
     <div class="flex justify-center lg:justify-start">
       <a href="/blog">
         <Button>Go Back</Button>
       </a>
     </div>
-    <div class="mx-auto mt-5 max-w-3xl">
-      <!-- Content -->
-      <div class="space-y-5 md:space-y-8">
-        <div class="space-y-3">
-          <h2 class="text-2xl font-bold dark:text-white md:text-3xl">
-            {post.data.title}
-          </h2>
-
-          <p class="text-lg text-gray-800 dark:text-gray-200">
-            {post.data.body}
-          </p>
-        </div>
-      </div>
-    </div>
+    <article class="prose prose-lg mx-auto mt-5 max-w-3xl dark:prose-invert">
+      <h1>{post.data.title}</h1>
+      <Content />
+    </article>
     <!-- End Content -->
   </div>
 </Layout>

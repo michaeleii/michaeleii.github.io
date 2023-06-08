@@ -1,6 +1,7 @@
 ---
-title: "Feedback App"
-description: "Feedback App is a web application that allows users give reviews and ratings."
-link: https://react-feedback-ui-michaellei.netlify.app/
-technologies: [react, tailwindcss, typescript]
+id: 9
+title: TradeSquare
+description: TradeSquare is a groundbreaking web application that redefines the art of bartering. With its powerful trading features and innovative Squares community.
+link: https://tradesquare.up.railway.app/
+technologies: [typescript, tailwindcss, express]
 ---

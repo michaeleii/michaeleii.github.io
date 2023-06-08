@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
 const projects = await getCollection("project");
+projects.sort((a, b) => b.data.id - a.data.id);
 ---
 
 <Layout title="Projects">
@@ -16,7 +17,7 @@ const projects = await getCollection("project");
             <Card
               title={project.data.title}
               technologies={project.data.technologies}
-              body={project.data.description}
+              description={project.data.description}
               linkText="View Project"
               link={project.data.link}
             />

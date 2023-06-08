@@ -1,6 +1,7 @@
 ---
-title: "Signup Form"
-description: "A signup form that showcases the power of CSS flexbox."
-link: https://michaeleii.github.io/sign-up-form/
-technologies: [html, css]
+id: 8
+title: Hello Kitty Memory Card
+description: Test your skills by matching pairs of adorable Hello Kitty images.
+link: https://michaeleii.github.io/memory-card/
+technologies: [react, tailwindcss, typescript]
 ---

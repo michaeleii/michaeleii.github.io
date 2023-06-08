@@ -13,7 +13,7 @@ const posts = await getCollection("blog");
         posts.map((post) => (
           <Card
             title={post.data.title}
-            body={post.data.body}
+            description={post.data.description}
             link={`/blog/${post.slug}`}
             linkText="Read More"
             createdAt={post.data.createdAt}
