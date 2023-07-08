@@ -2,6 +2,7 @@ import z from "zod";
 
 const Technologies = z.enum([
   "react",
+  "redux",
   "typescript",
   "tailwindcss",
   "nextjs",
