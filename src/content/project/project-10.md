@@ -1,7 +1,7 @@
 ---
 id: 10
 title: "Yum Yum Pizza"
-description: Yum Yum Pizza" is a beautifully designed restaurant website that showcases a menu for a fictional pizza restaurant.
-link: https://michaeleii.github.io/yum-yum-pizza/
-technologies: [react, tailwindcss, typescript]
+description: Yum Yum Pizza" is a beautifully designed pizza restaurant website that showcases a pizza ordering and delivery system.
+link: yum-yum-pizza.vercel.app
+technologies: [react, tailwindcss, redux, typescript]
 ---

@@ -1,7 +1,7 @@
 ---
 id: 9
-title: TradeSquare
-description: TradeSquare is a groundbreaking web application that redefines the art of bartering. With its powerful trading features and innovative Squares community.
-link: https://tradesquare.up.railway.app/
-technologies: [typescript, tailwindcss, express]
+title: Waypoint World
+description: Waypoint World allows users to keep track of their favorite locations around the world.
+link: https://waypoint-world.netlify.app/
+technologies: [react, tailwindcss, typescript]
 ---
